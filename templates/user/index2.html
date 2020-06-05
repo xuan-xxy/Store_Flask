@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商城首页</title>
+    <meta name="referrer" content="no-referrer">
+    <style>
+
+
+
+        li{float: left; list-style:none;}
+        a{
+
+        text-decoration:none;
+
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+ <center><div class="search">
+            <input type="text" placeholder="请输入..." name="keyword" id="" value="" />
+            <button><i>搜索</i></button>
+        </div></center>
+
+ <a  class="ln" href="/login">登录</a>
+ <a class='rg' href="/register">注册</a>
+ <a class='od' href="/order_deail"> 购物车</a>
+ {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+ <div>
+	<ul class="media-list">
+
+						{% if goods_list %}
+                        	{% for goods in goods_list %}
+						<li class="media">
+
+                            <img src="{{goods.goods_img_url}}"  alt="{{goods.goods_name}}" />
+                            <br>
+                            	{{goods.goods_name}}
+                            {{goods.goods_price}}
+                            <a href="/add_order?good_id={{goods.id}}"> 加入购物车</a>
+						</li>
+
+					    	{% endfor %}
+						{% endif %}
+
+					</ul>
+
+</div>
+
+</body>
+</html>

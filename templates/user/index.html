@@ -1,0 +1,27 @@
+
+{% extends 'user/base.html' %}
+{% block title %}
+首页
+{% endblock %}
+
+{% block content %}
+<div>
+	<ul >
+						{% if goods_list %}
+                        	{% for goods in goods_list %}
+						<li>
+
+                            <img src="{{goods.goods_img_url}}"  alt="{{goods.goods_name}}" />
+                            <br>
+
+                            	&nbsp;&nbsp;{{goods.goods_name}}
+                            &nbsp;&nbsp;￥{{goods.goods_price}}
+                            &nbsp;&nbsp;<a href="/add_order?good_id={{goods.id}}"> 加入购物车</a>
+						</li>
+                      {% endfor %}
+						{% endif %}
+					</ul>
+    </div>
+
+{% endblock %}
+
